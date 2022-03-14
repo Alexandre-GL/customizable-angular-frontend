@@ -6,9 +6,7 @@ import { AppRoutingModule } from './base-routing.module';
 import { BaseComponent } from './base.component';
 
 import { MessagingModule } from './messaging/messaging.module';
-import { services } from './services';
-
-export type BaseConfig = Record<string, Type<any>>;
+import { Services, services } from './services';
 
 @NgModule({
   declarations: [
@@ -25,14 +23,12 @@ export type BaseConfig = Record<string, Type<any>>;
   ],
 })
 export class BaseModule {
-  static forRoot(config?: BaseConfig): ModuleWithProviders<BaseModule> {
-    const res = {
+  static forRoot(config?: Partial<Services>): ModuleWithProviders<BaseModule> {
+    return {
       ngModule: BaseModule,
-      providers: Object.keys(services).map((key) => {
+      providers: (Object.keys(services) as Array<keyof typeof services>).map((key) => {
         return { provide: services[key].provides, useClass: config && config[key] || services[key].service }
       })
     };
-    console.log(res);
-    return res
   }
 }
