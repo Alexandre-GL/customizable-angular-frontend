@@ -1,0 +1,9 @@
+h1 {
+  text-align: center;
+  margin: 24px;
+}
+
+.main {
+  margin: auto;
+  max-width: 200px;
+}
