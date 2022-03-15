@@ -1,4 +1,4 @@
-# Frontend example for a customizable web app with Nest
+# Frontend example for a customizable web app with Angular
 
 ## Getting started
 
