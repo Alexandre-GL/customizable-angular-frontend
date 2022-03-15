@@ -27,7 +27,7 @@ export class BaseModule {
     return {
       ngModule: BaseModule,
       providers: (Object.keys(services) as Array<keyof typeof services>).map((key) => {
-        return { provide: services[key].provides, useClass: config && config[key] || services[key].service }
+        return { provide: services[key].provide, useClass: config && config[key] || services[key].service }
       })
     };
   }
